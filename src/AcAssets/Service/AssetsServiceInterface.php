@@ -8,10 +8,22 @@ namespace AcAssets\Service;
  */
 interface AssetsServiceInterface {
 
+    /**
+     * Initializes the HeadScript element
+     * @return $this
+     */
     public function initHeadScript();
 
+    /**
+     * Initializes the InlineScript element
+     * @return $this
+     */
     public function initInlineScript();
 
+    /**
+     * Initializes the HeadLink element
+     * @return $this
+     */
     public function initHeadLink();
 
 } 
