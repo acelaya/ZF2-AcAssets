@@ -2,6 +2,7 @@
 namespace AcAssets\Service;
 
 use AcAssets\Options\AssetsOptions;
+use Zend\Debug\Debug;
 use Zend\View\Helper\HeadLink;
 use Zend\View\Helper\HeadScript;
 use Zend\View\Helper\InlineScript;
@@ -43,13 +44,8 @@ class AssetsService implements AssetsServiceInterface {
      */
     public function initHeadScript()
     {
-        $cssPath = $this->options->getCss()->getPath();
-        foreach ($this->options->getCss()->getStylesheets() as $css) {
-            if (isset($css["media"]))
-                $this->headLink->appendStylesheet($cssPath . "/" . $css["name"], $css["media"], false, array());
-            else
-                $this->headLink->appendStylesheet($cssPath . "/" . $css["name"], 'screen', false, array());
-        }
+        foreach ($this->options->getJs()->getHead() as $js)
+            $this->setJavascript($this->headScript, $js);
 
         return $this;
     }
@@ -70,8 +66,13 @@ class AssetsService implements AssetsServiceInterface {
      */
     public function initHeadLink()
     {
-        foreach ($this->options->getJs()->getHead() as $js)
-            $this->setJavascript($this->headScript, $js);
+        $cssPath = $this->options->getCss()->getPath();
+        foreach ($this->options->getCss()->getStylesheets() as $css) {
+            if (isset($css["media"]))
+                $this->headLink->appendStylesheet($cssPath . "/" . $css["name"], $css["media"], false, array());
+            else
+                $this->headLink->appendStylesheet($cssPath . "/" . $css["name"], 'screen', false, array());
+        }
 
         return $this;
     }
