@@ -14,6 +14,10 @@ return array(
 //				),
 //				'main'         => array(
 //					'name'     => 'main.min.css',
+//				),
+//				'print'        => array(
+//					'name'     => 'print.min.css',
+//                  'media'    => 'print'
 //				)
 			)
 		),
@@ -21,7 +25,7 @@ return array(
 			'path'      => '/js',
 			'inline'    => array(
 //				'jquery' => array(
-//                    'name' => 'jquery-1.10.2.min.js',
+//                    'name' => 'jquery.min.js',
 //				),
 //				'bootstrap' => array(
 //                    'name' => 'bootstrap.min.js',

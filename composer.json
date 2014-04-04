@@ -1,6 +1,6 @@
 {
-    "name" : "acelaya/zf2-acmailer",
-    "description" : "Assets handling module for Zend Framework 2",
+    "name" : "acelaya/zf2-acassets",
+    "description" : "Assets management module for Zend Framework 2",
     "type" : "library",
     "authors" : [
         {
