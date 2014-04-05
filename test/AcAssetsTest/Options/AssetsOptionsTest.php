@@ -20,50 +20,7 @@ class AssetsOptionsTest extends \PHPUnit_Framework_TestCase {
     private $options;
 
     public function setUp() {
-        $this->config = array(
-            'css'   => array(
-                'path'         => '/css',
-                'stylesheets'  => array(
-                    'bootstrap'    => array(
-                        'name'     => 'bootstrap.min.css',
-                    ),
-                    'font.awesome'    => array(
-                        'name'     => 'font-awesome.min.css',
-                    ),
-                    'main'         => array(
-                        'name'     => 'main.min.css',
-                    ),
-                    'print'        => array(
-                        'name'     => 'print.min.css',
-                        'media'    => 'print'
-                    )
-                )
-            ),
-            'js'    => array(
-                'path'      => '/js',
-                'inline'    => array(
-                    'jquery' => array(
-                        'name' => 'jquery.min.js',
-                    ),
-                    'bootstrap' => array(
-                        'name' => 'bootstrap.min.js',
-                    ),
-                    'main' => array(
-                        'name' => 'main.min.js',
-                    ),
-                ),
-                'head'      => array(
-                    'respond' => array(
-                        'name'     => 'respond.min.js',
-                        'options'  => array('conditional' => 'lt IE 9')
-                    ),
-                    'html5shiv' => array(
-                        'name'     => 'html5shiv.min.js',
-                        'options'  => array('conditional' => 'lt IE 9')
-                    ),
-                )
-            )
-        );
+        $this->config = include __DIR__ . '/../../assets.test.php';
         $this->options = new AssetsOptions($this->config);
     }
 
@@ -73,7 +30,7 @@ class AssetsOptionsTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testInnerOptionsAreParsed() {
-        $this->assertInstanceOf('AcAssets\Options\CssOptions', $this->optionggs->getCss());
+        $this->assertInstanceOf('AcAssets\Options\CssOptions', $this->options->getCss());
         $this->assertInstanceOf('AcAssets\Options\JsOptions', $this->options->getJs());
     }
 
