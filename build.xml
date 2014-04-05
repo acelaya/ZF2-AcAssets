@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="zf2-acassets">
+
+    <property name="data.dir" value="${application.startdir}/data" />
+    <property name="test.dir" value="${application.startdir}/test" />
+    <property name="phpdox.docs.dir" value="${data.dir}/phpdox/docs" />
+    <property name="phpdox.bin.dir" value="${data.dir}/phpdox/bin" />
+    <property name="phpunit.dir" value="${data.dir}/phpunit" />
+
+    <target name="build"
+            depends="basic"
+            description="Main building target" />
+
+    <target name="basic"
+            depends="clean, install-dependencies, generate-autoload, test, docs"
+            description="Basic build operations" />
+
+    <target name="clean"
+            description="Cleans-up workspace before building">
+
+        <delete dir="${data.dir}" />
+        <mkdir dir="${data.dir}" />
+
+    </target>
+
+    <target name="install-dependencies"
+            description="Installs dependencies by using composer">
+
+        <exec executable="composer" logoutput="true" checkreturn="true">
+            <arg value="update" />
+            <arg value="--no-dev" />
+        </exec>
+
+    </target>
+
+    <target name="generate-autoload"
+            description="Regenerates autoload_classmapt.php script">
+
+        <exec executable="php" logoutput="true" checkreturn="true">
+            <arg value="${application.startdir}/vendor/bin/classmap_generator.php" />
+            <arg value="${application.startdir}" />
+            <arg value="-i" />
+            <arg value="Zend,Composer,AcAssetsTest" />
+        </exec>
+
+    </target>
+
+    <target name="test"
+            description="Runs PHPUnit test cases">
+
+        <mkdir dir="${phpunit.dir}" />
+        <exec executable="phpunit" logoutput="true" checkreturn="true">
+            <arg value="-c"/>
+            <arg value="${test.dir}/phpunit.xml"/>
+            <arg value="--coverage-clover"/>
+            <arg value="${phpunit.dir}/clover.xml"/>
+            <arg value="--coverage-html"/>
+            <arg value="${phpunit.dir}/coverage"/>
+            <arg value="--log-junit"/>
+            <arg value="${phpunit.dir}/junit.xml"/>
+        </exec>
+
+    </target>
+
+    <target name="docs">
+
+        <mkdir dir="${phpdox.bin.dir}" />
+        <mkdir dir="${phpdox.docs.dir}" />
+        <exec executable="phpdox" logoutput="true" />
+
+    </target>
+
+</project>
