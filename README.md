@@ -1,8 +1,9 @@
 ## AcAssets
 
-Master: [![Build Status](https://travis-ci.org/acelaya/ZF2-AcAssets.svg?branch=master)](https://travis-ci.org/acelaya/ZF2-AcAssets)
-
-Develop: [![Build Status](https://travis-ci.org/acelaya/ZF2-AcAssets.svg?branch=develop)](https://travis-ci.org/acelaya/ZF2-AcAssets)
+[![Build Status](https://travis-ci.org/acelaya/ZF2-AcAssets.svg?branch=master)](https://travis-ci.org/acelaya/ZF2-AcAssets)
+[![Latest Stable Version](https://poser.pugx.org/acelaya/zf2-acassets/v/stable.png)](https://packagist.org/packages/acelaya/zf2-acassets)
+[![Total Downloads](https://poser.pugx.org/acelaya/zf2-acassets/downloads.png)](https://packagist.org/packages/acelaya/zf2-acassets)
+[![License](https://poser.pugx.org/acelaya/zf2-acassets/license.png)](https://packagist.org/packages/acelaya/zf2-acassets)
 
 This module can be used to define assets (CSS / JS) in configuration files instead of defining them directly in a layout, injecting defined scripts and stylesheets in InlineScript, HeadScript and HeadLink.
 
