@@ -1,2 +1,4 @@
 config/assets.global.php
 data
+vendor
+composer.lock

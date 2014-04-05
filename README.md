@@ -1,5 +1,9 @@
 ## AcAssets
 
+Master: [![Build Status](https://travis-ci.org/acelaya/ZF2-AcAssets.svg?branch=master)](https://travis-ci.org/acelaya/ZF2-AcAssets)
+
+Develop: [![Build Status](https://travis-ci.org/acelaya/ZF2-AcAssets.svg?branch=develop)](https://travis-ci.org/acelaya/ZF2-AcAssets)
+
 This module can be used to define assets (CSS / JS) in configuration files instead of defining them directly in a layout, injecting defined scripts and stylesheets in InlineScript, HeadScript and HeadLink.
 
 This allows to take advantage of Zend Framework's configuration system, overriding global configurations with local configuration or even defining different configurations for each environment. Take a look at this [advanced configuration tricks](http://framework.zend.com/manual/2.2/en/tutorials/config.advanced.html).
