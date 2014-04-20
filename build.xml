@@ -86,7 +86,7 @@
 
     <target name="docs">
 
-        <exec executable="phpdox" logoutput="true" />
+        <exec executable="${vendor.dir}/bin/phpdox" logoutput="true" />
 
     </target>
 
