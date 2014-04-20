@@ -75,11 +75,11 @@
             <arg value="-c"/>
             <arg value="${test.dir}/phpunit.xml"/>
             <arg value="--coverage-clover"/>
-            <arg value="${phpunit.out.dir}/clover.xml"/>
+            <arg value="${application.startdir}/${phpunit.out.dir}/clover.xml"/>
             <arg value="--coverage-html"/>
-            <arg value="${phpunit.out.dir}/coverage"/>
+            <arg value="${application.startdir}/${phpunit.out.dir}/coverage"/>
             <arg value="--log-junit"/>
-            <arg value="${phpunit.out.dir}/junit.xml"/>
+            <arg value="${application.startdir}/${phpunit.out.dir}/junit.xml"/>
         </exec>
 
     </target>
