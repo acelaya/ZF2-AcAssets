@@ -12,8 +12,8 @@ use Zend\View\Helper\InlineScript;
  * @author Alejandro Celaya Alastrué
  * @see http://www.alejandrocelaya.com
  */
-class AssetsService implements AssetsServiceInterface {
-
+class AssetsService implements AssetsServiceInterface
+{
     /**
      * @var HeadScript
      */
@@ -31,7 +31,12 @@ class AssetsService implements AssetsServiceInterface {
      */
     private $options;
 
-    public function __construct(HeadScript $headScript, InlineScript $inlineScript, HeadLink $headLink, AssetsOptions $options) {
+    public function __construct(
+        HeadScript $headScript,
+        InlineScript $inlineScript,
+        HeadLink $headLink,
+        AssetsOptions $options
+    ) {
         $this->headScript   = $headScript;
         $this->inlineScript = $inlineScript;
         $this->headLink     = $headLink;
@@ -44,8 +49,9 @@ class AssetsService implements AssetsServiceInterface {
      */
     public function initHeadScript()
     {
-        foreach ($this->options->getJs()->getHead() as $js)
+        foreach ($this->options->getJs()->getHead() as $js) {
             $this->setJavascript($this->headScript, $js);
+        }
 
         return $this;
     }
@@ -55,8 +61,9 @@ class AssetsService implements AssetsServiceInterface {
      */
     public function initInlineScript()
     {
-        foreach ($this->options->getJs()->getInline() as $js)
+        foreach ($this->options->getJs()->getInline() as $js) {
             $this->setJavascript($this->inlineScript, $js);
+        }
 
         return $this;
     }
@@ -68,10 +75,11 @@ class AssetsService implements AssetsServiceInterface {
     {
         $cssPath = $this->options->getCss()->getPath();
         foreach ($this->options->getCss()->getStylesheets() as $css) {
-            if (isset($css["media"]))
+            if (isset($css["media"])) {
                 $this->headLink->appendStylesheet($cssPath . "/" . $css["name"], $css["media"], false, array());
-            else
+            } else {
                 $this->headLink->appendStylesheet($cssPath . "/" . $css["name"], 'screen', false, array());
+            }
         }
 
         return $this;
@@ -82,12 +90,13 @@ class AssetsService implements AssetsServiceInterface {
      * @param HeadScript $element
      * @param array $js
      */
-    private function setJavascript(HeadScript $element, array $js = array()) {
+    private function setJavascript(HeadScript $element, array $js = array())
+    {
         $jsPath = $this->options->getJs()->getPath();
-        if (isset($js["options"]))
+        if (isset($js["options"])) {
             $element->appendFile($jsPath . "/" . $js["name"], "text/javascript", $js["options"]);
-        else
+        } else {
             $element->appendFile($jsPath . "/" . $js["name"]);
+        }
     }
-
 }

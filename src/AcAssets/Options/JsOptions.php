@@ -8,11 +8,20 @@ use Zend\Stdlib\AbstractOptions;
  * @author Alejandro Celaya Alastrué
  * @see http://www.alejandrocelaya.com
  */
-class JsOptions extends AbstractOptions {
-
-    protected $path     = '';
-    protected $head     = array();
-    protected $inline   = array();
+class JsOptions extends AbstractOptions
+{
+    /**
+     * @var string
+     */
+    protected $path = '';
+    /**
+     * @var array
+     */
+    protected $head = array();
+    /**
+     * @var array
+     */
+    protected $inline = array();
 
     /**
      * @param array $head
@@ -58,5 +67,4 @@ class JsOptions extends AbstractOptions {
     {
         return $this->path;
     }
-
-} 
+}

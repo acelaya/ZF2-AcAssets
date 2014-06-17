@@ -12,8 +12,8 @@ use Zend\View\Helper\InlineScript;
  * @author Alejandro Celaya Alastrué
  * @see http://www.alejandrocelaya.com
  */
-class AssetsServiceTest extends \PHPUnit_Framework_TestCase {
-
+class AssetsServiceTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @var AssetsService
      */
@@ -35,7 +35,8 @@ class AssetsServiceTest extends \PHPUnit_Framework_TestCase {
      */
     private $headLink;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->headScript       = new HeadScript();
         $this->inlineScript     = new InlineScript();
         $this->headLink         = new HeadLink();
@@ -48,23 +49,25 @@ class AssetsServiceTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testEmptyAssetsBeforInitialization() {
+    public function testEmptyAssetsBeforInitialization()
+    {
         $this->assertCount(0, $this->headScript);
         $this->assertCount(0, $this->inlineScript);
         $this->assertCount(0, $this->headLink);
     }
 
-    public function testNumberOfAssetsAfterInitialization() {
+    public function testNumberOfAssetsAfterInitialization()
+    {
         $this->init();
         $this->assertCount(4, $this->headLink);
         $this->assertCount(3, $this->inlineScript);
         $this->assertCount(2, $this->headScript);
     }
 
-    private function init() {
+    private function init()
+    {
         $this->assetsService->initInlineScript()
                             ->initHeadScript()
                             ->initHeadLink();
     }
-
-} 
+}

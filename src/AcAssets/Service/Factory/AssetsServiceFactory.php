@@ -11,8 +11,8 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @author Alejandro Celaya Alastrué
  * @see http://www.alejandrocelaya.com
  */
-class AssetsServiceFactory implements FactoryInterface {
-
+class AssetsServiceFactory implements FactoryInterface
+{
     /**
      * Create service
      *
@@ -29,5 +29,4 @@ class AssetsServiceFactory implements FactoryInterface {
 
         return new AssetsService($headScript, $inlineScript, $headLink, $options);
     }
-
 }
