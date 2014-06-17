@@ -10,8 +10,8 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @author Alejandro Celaya Alastrué
  * @see http://www.alejandrocelaya.com
  */
-class AssetsOptionsFactory implements FactoryInterface {
-
+class AssetsOptionsFactory implements FactoryInterface
+{
     /**
      * Create service
      *
@@ -23,5 +23,4 @@ class AssetsOptionsFactory implements FactoryInterface {
         $config = $serviceLocator->get('Config');
         return new AssetsOptions(isset($config['assets']) ? $config['assets'] : array());
     }
-
 }

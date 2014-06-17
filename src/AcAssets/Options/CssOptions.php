@@ -8,10 +8,16 @@ use Zend\Stdlib\AbstractOptions;
  * @author Alejandro Celaya Alastrué
  * @see http://www.alejandrocelaya.com
  */
-class CssOptions extends AbstractOptions {
-
-    protected $path         = '';
-    protected $stylesheets  = array();
+class CssOptions extends AbstractOptions
+{
+    /**
+     * @var string
+     */
+    protected $path = '';
+    /**
+     * @var array
+     */
+    protected $stylesheets = array();
 
     /**
      * @param string $path
@@ -42,5 +48,4 @@ class CssOptions extends AbstractOptions {
     {
         return $this->stylesheets;
     }
-
-} 
+}

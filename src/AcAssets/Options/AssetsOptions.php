@@ -8,10 +8,16 @@ use Zend\Stdlib\AbstractOptions;
  * @author Alejandro Celaya Alastrué
  * @see http://www.alejandrocelaya.com
  */
-class AssetsOptions extends AbstractOptions {
-
-    protected $css  = array();
-    protected $js   = array();
+class AssetsOptions extends AbstractOptions
+{
+    /**
+     * @var array
+     */
+    protected $css = array();
+    /**
+     * @var array
+     */
+    protected $js = array();
 
     /**
      * @param array $css
@@ -25,8 +31,9 @@ class AssetsOptions extends AbstractOptions {
      */
     public function getCss()
     {
-        if (is_array($this->css))
+        if (is_array($this->css)) {
             $this->css = new CssOptions($this->css);
+        }
 
         return $this->css;
     }
@@ -43,10 +50,10 @@ class AssetsOptions extends AbstractOptions {
      */
     public function getJs()
     {
-        if (is_array($this->js))
+        if (is_array($this->js)) {
             $this->js = new JsOptions($this->js);
+        }
 
         return $this->js;
     }
-
-} 
+}
