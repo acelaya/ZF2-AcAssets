@@ -6,8 +6,8 @@ namespace AcAssets\Service;
  * @author Alejandro Celaya Alastrué
  * @see http://www.alejandrocelaya.com
  */
-interface AssetsServiceInterface {
-
+interface AssetsServiceInterface
+{
     /**
      * Initializes the HeadScript element
      * @return $this
@@ -25,5 +25,4 @@ interface AssetsServiceInterface {
      * @return $this
      */
     public function initHeadLink();
-
-} 
+}
