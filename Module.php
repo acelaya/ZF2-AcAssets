@@ -18,7 +18,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     {
         return array(
             'Zend\Loader\ClassMapAutoloader' => array(
-        	    __DIR__ . '/autoload_classmap.php',
+                __DIR__ . '/autoload_classmap.php',
             ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
@@ -48,12 +48,12 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     /**
      * Reads assets from configuration and injects them into view by using view helpers
      */
-    public function setAssets(MvcEvent $e) {
+    public function setAssets(MvcEvent $e)
+    {
         /* @var AssetsServiceInterface $assetsService */
         $assetsService = $e->getApplication()->getServiceManager()->get('AcAssets\Service\AssetsService');
         $assetsService->initHeadLink()
                       ->initHeadScript()
                       ->initInlineScript();
     }
-    
 }
