@@ -110,18 +110,21 @@ class AssetsService implements AssetsServiceInterface
      */
     private function orderByPriority(array $elements)
     {
-        usort($elements, function ($a, $b) {
-            $priorityA = isset($a['priority']) ? (int) $a['priority'] : 1;
-            $priorityB = isset($b['priority']) ? (int) $b['priority'] : 1;
+        // Drop keys from the elements array
+        $elements = array_values($elements);
+        $length = count($elements);
+        for ($i = 0; $i < $length; $i++) {
+            for ($j = $i; $j < $length; $j++) {
+                $priorityFirst = isset($elements[$i]['priority']) ? (int) $elements[$i]['priority'] : 1;
+                $prioritySecond = isset($elements[$j]['priority']) ? (int) $elements[$j]['priority'] : 1;
 
-            if ($priorityA === $priorityB) {
-                return 0;
-            } elseif ($priorityA > $priorityB) {
-                return 1;
+                if ($priorityFirst < $prioritySecond) {
+                    $aux = $elements[$j];
+                    $elements[$j] = $elements[$i];
+                    $elements[$i] = $aux;
+                }
             }
-
-            return -1;
-        });
+        }
 
         return $elements;
     }

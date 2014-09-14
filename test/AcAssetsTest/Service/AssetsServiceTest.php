@@ -68,9 +68,9 @@ class AssetsServiceTest extends \PHPUnit_Framework_TestCase
     {
         $this->init();
         $this->assertCount(3, $this->inlineScript);
-        $this->assertEquals('/js/main.min.js', $this->inlineScript->offsetGet(0)->attributes['src']);
+        $this->assertEquals('/js/bootstrap.min.js', $this->inlineScript->offsetGet(0)->attributes['src']);
         $this->assertEquals('/js/jquery.min.js', $this->inlineScript->offsetGet(1)->attributes['src']);
-        $this->assertEquals('/js/bootstrap.min.js', $this->inlineScript->offsetGet(2)->attributes['src']);
+        $this->assertEquals('/js/main.min.js', $this->inlineScript->offsetGet(2)->attributes['src']);
     }
 
     private function init()
