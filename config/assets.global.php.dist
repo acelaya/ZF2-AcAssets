@@ -24,11 +24,13 @@ return array(
         'js'    => array(
             'path'      => '/js',
             'inline'    => array(
-//                'jquery' => array(
-//                    'name' => 'jquery.min.js',
-//                ),
 //                'bootstrap' => array(
 //                    'name' => 'bootstrap.min.js',
+//                    'priority' => 5,
+//                ),
+//                'jquery' => array(
+//                    'name' => 'jquery.min.js',
+//                    'priority' => 10,
 //                ),
 //                'main' => array(
 //                    'name' => 'main.min.js',

@@ -25,12 +25,15 @@ return array(
         'inline'    => array(
             'jquery' => array(
                 'name' => 'jquery.min.js',
+                'priority' => 25
             ),
             'bootstrap' => array(
                 'name' => 'bootstrap.min.js',
+                'priority' => 55
             ),
             'main' => array(
                 'name' => 'main.min.js',
+                'priority' => 8
             ),
         ),
         'head'      => array(
