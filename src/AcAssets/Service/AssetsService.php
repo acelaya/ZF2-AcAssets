@@ -49,7 +49,8 @@ class AssetsService implements AssetsServiceInterface
      */
     public function initHeadScript()
     {
-        foreach ($this->options->getJs()->getHead() as $js) {
+        $javascripts = $this->orderByPriority($this->options->getJs()->getHead());
+        foreach ($javascripts as $js) {
             $this->setJavascript($this->headScript, $js);
         }
 
@@ -61,7 +62,8 @@ class AssetsService implements AssetsServiceInterface
      */
     public function initInlineScript()
     {
-        foreach ($this->options->getJs()->getInline() as $js) {
+        $javascripts = $this->orderByPriority($this->options->getJs()->getInline());
+        foreach ($javascripts as $js) {
             $this->setJavascript($this->inlineScript, $js);
         }
 
@@ -74,7 +76,8 @@ class AssetsService implements AssetsServiceInterface
     public function initHeadLink()
     {
         $cssPath = $this->options->getCss()->getPath();
-        foreach ($this->options->getCss()->getStylesheets() as $css) {
+        $stylesheets = $this->orderByPriority($this->options->getCss()->getStylesheets());
+        foreach ($stylesheets as $css) {
             if (isset($css["media"])) {
                 $this->headLink->appendStylesheet($cssPath . "/" . $css["name"], $css["media"], false, array());
             } else {
@@ -98,5 +101,31 @@ class AssetsService implements AssetsServiceInterface
         } else {
             $element->appendFile($jsPath . "/" . $js["name"]);
         }
+    }
+
+    /**
+     * Gets provided array and orders it by priority
+     * @param array $elements
+     * @return array
+     */
+    private function orderByPriority(array $elements)
+    {
+        // Drop keys from the elements array
+        $elements = array_values($elements);
+        $length = count($elements);
+        for ($i = 0; $i < $length; $i++) {
+            for ($j = $i; $j < $length; $j++) {
+                $priorityFirst = isset($elements[$i]['priority']) ? (int) $elements[$i]['priority'] : 1;
+                $prioritySecond = isset($elements[$j]['priority']) ? (int) $elements[$j]['priority'] : 1;
+
+                if ($priorityFirst < $prioritySecond) {
+                    $aux = $elements[$j];
+                    $elements[$j] = $elements[$i];
+                    $elements[$i] = $aux;
+                }
+            }
+        }
+
+        return $elements;
     }
 }

@@ -115,11 +115,13 @@ return array(
     'js'    => array(
         'path'      => '/js',
         'inline'    => array(
-            'jquery' => array(
-                'name' => 'jquery.min.js',
-            ),
             'bootstrap' => array(
                 'name' => 'bootstrap.min.js',
+                'priority' => 5
+            ),
+            'jquery' => array(
+                'name' => 'jquery.min.js',
+                'priority' => 10
             ),
             'main' => array(
                 'name' => 'main.min.js',
@@ -147,7 +149,7 @@ The `js` block wraps the files that will be included in headScript and inlineScr
 
 Both `inline` and `head` are associative arrays with the files that should be injected in the layout. As in `stylesheets`, the `name` property is the filename relative to `path`. It also has an `options` property which is the third param used when calling the method `appendFile`.
 
-The scripts and stylesheets are injected in the order they are defined in `css/stylesheets`, `js/inline` and `js/head`.
+The scripts and stylesheets are appended in the order they are defined in `css/stylesheets`, `js/inline` and `js/head`, but a `priority` property can be defined in any of them to set the order in which they should be appended. It's 1 by default.
 
 ### TODO
 
